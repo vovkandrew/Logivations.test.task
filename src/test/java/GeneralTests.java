@@ -1,23 +1,23 @@
 import algorythm.PackingTool;
 import db.ProductDatabase;
+import java.util.List;
+import java.util.Arrays;
 import models.Case;
 import models.Orderline;
 import models.Package;
 import models.Product;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Test;
 
-import java.util.*;
-
-public class Test {
+public class GeneralTests {
 
     @Before
     public void clearProductDatabase() {
         ProductDatabase.clearDatabase();
     }
 
-    @org.junit.Test
+    @Test
     public void packingToolCheckOverallOneBestOption() {
         Product p1 = new Product(1L, 2, 2, 2);
         Product p2 = new Product(2L, 6, 6, 6);
@@ -38,7 +38,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void packingToolTwoBestOptionsWithTheSameVolumeFactorButWithDiffNumOfProducts() {
         Product p1 = new Product(1L, 2, 2, 2);
         Product p2 = new Product(2L, 2, 2, 2);
@@ -59,7 +59,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void packingToolOneBestOptionOnlyOneProduct() {
         Product p1 = new Product(1L, 2, 2, 2);
         List<Product> pl = Arrays.asList(p1);
@@ -78,7 +78,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void packingToolOneBestOptionOnlyOneCase() {
         Product p1 = new Product(1L, 2, 2, 2);
         Product p2 = new Product(2L, 3, 3, 3);
@@ -97,7 +97,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test(expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
     public void packingToolWrongProductId() {
         Product p1 = new Product(1L, 2, 2, 2);
         Product p2 = new Product(2L, 3, 3, 3);
@@ -117,7 +117,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test(expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
     public void packingTollNoOptionsToPackAnyOrder() {
         Product p1 = new Product(1L, 2, 2, 2);
         Product p2 = new Product(2L, 6, 6, 6);
@@ -136,21 +136,21 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void productCopyMethod() {
         Product expected = new Product(1L, 5, 5, 5);
         Product actual = expected.copy();
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void caseCopyMethod() {
         Case expected = new Case(1L, 5, 5, 5);
         Case actual = expected.copy();
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void boxRotateMethod() {
         Product product = new Product(1L, 10, 15, 5);
         Product expected = new Product(1L, 15, 5, 10);
@@ -159,7 +159,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void productDatabaseAddProductCheckAndGetNumberOfAvailableProductsMethod() {
         Product product = new Product(1L, 10, 15, 5);
         ProductDatabase.addProduct(product);
@@ -168,7 +168,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void productDatabaseAddProductsCheckAndGetNumberOfAvailableProductsMethod() {
         Product product = new Product(1L, 10, 15, 5);
         Product product2 = new Product(2L, 20, 15, 5);
@@ -179,7 +179,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void productDatabaseFindProductByIdMethod() {
         Product product = new Product(1L, 10, 15, 5);
         Product product2 = new Product(2L, 20, 15, 5);
@@ -191,7 +191,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void packageAddOneProductToPackageMethod() {
         Product product = new Product(1L, 3, 3, 3);
         Case casee = new Case(1L, 15, 15, 15);
@@ -203,7 +203,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void packageAddSeveralProductsToPackageMethod() {
         Product product = new Product(1L, 3, 3, 3);
         Case casee = new Case(1L, 15, 15, 15);
@@ -215,7 +215,7 @@ public class Test {
         Assert.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void packageGetEffectiveVolumeFillingFactor() {
         Product product = new Product(1L, 3, 3, 3);
         Case casee = new Case(1L, 12, 12, 12);

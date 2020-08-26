@@ -1,5 +1,5 @@
 "# Logivations.test.task" 
-Test task description:
+GeneralTests task description:
 Написати алгоритм пакування замовлень в коробки. Коробка (case) є таблицею з наступними колонками:
  id, sizeX, sizeY, sizeZ. Продукт (product) є таблицею з колонками: id, sizeX, sizeY, sizeZ.  
  Замовлення (orderline) - таблиця: id, numberOfProducts, productId. 
